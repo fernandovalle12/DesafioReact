@@ -27,7 +27,7 @@ export default class TodoForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <input name="text" value={this.state.text} onChange={this.handleChange} placeholder="item"/>
+        <input name="text" value={this.state.text} onChange={this.handleChange} />
         <button onClick={this.handleSubmit}>Adicionar</button>
       </form>
     );
