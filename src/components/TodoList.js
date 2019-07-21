@@ -1,6 +1,12 @@
 import React from "react";
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
+import '../index.css'
+
 
 export default class TodoList extends React.Component {
   state = {
@@ -48,15 +54,23 @@ export default class TodoList extends React.Component {
     }
 
     return (
-      <div>
-        <TodoForm onSubmit={this.addTodo}/>
-        {todos.map(todo => <Todo key={todo.id} toggleComplete={() => this.toggleComplete(todo.id)} todo={todo} />)}
-        <div>
-          <button onClick={() => this.updateTodoToShow("all")}>Tudo</button>
-          <button onClick={() => this.updateTodoToShow("open")}>Aberto</button>
-          <button onClick={() => this.updateTodoToShow("closed")}>Fechado</button>
-        </div>
-      </div>
+      <Container>
+        <Row className="justify-content-md-center">
+          <TodoForm onSubmit={this.addTodo}/>
+          {todos.map(todo => <Todo key={todo.id} toggleComplete={() => this.toggleComplete(todo.id)} todo={todo} />)}
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col xs lg="1">
+            <Button variant="outline-dark" onClick={() => this.updateTodoToShow("all")}>Tudo</Button>
+          </Col>
+          <Col xs lg="1">
+            <Button variant="outline-primary" onClick={() => this.updateTodoToShow("open")}>Aberto</Button>
+          </Col>
+          <Col xs lg="1">
+            <Button variant="outline-danger" onClick={() => this.updateTodoToShow("closed")}>Fechado</Button>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

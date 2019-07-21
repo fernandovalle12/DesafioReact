@@ -1,5 +1,10 @@
 import React from "react";
 import shortid from "shortid";
+import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl'
+import Form from 'react-bootstrap/Form'
+import InputGroup from 'react-bootstrap/InputGroup'
+import '../index.css'
 
 export default class TodoForm extends React.Component {
   state = {
@@ -26,10 +31,14 @@ export default class TodoForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input name="text" value={this.state.text} onChange={this.handleChange} />
-        <button onClick={this.handleSubmit}>Adicionar</button>
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+        <InputGroup>
+          <FormControl name="text" value={this.state.text} onChange={this.handleChange} />
+          <InputGroup.Append>
+            <Button variant="outline-success" onClick={this.handleSubmit}>Add</Button>
+          </InputGroup.Append>
+        </InputGroup>
+      </Form>
     );
   }
 }
